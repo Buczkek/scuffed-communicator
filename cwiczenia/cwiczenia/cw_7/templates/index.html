@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pythin Flask App</title>
+</head>
+<body>
+<form method="POST">
+    {% for q in questions %}
+    <p>
+        {{ q.q }}
+        <br/>
+        {% set qnr = loop.index0 %} {% if q.o %} {% for o in q.o %}
+        <label>
+            <input type="radio" value="{{ o }}" name="{{ qnr }}"/>
+            {{ o }}
+        </label>
+        {% endfor %} {% else %}
+        <input type="text" name="{{ qnr }}"/>
+        {% endif %}
+    </p>
+    {% endfor %}
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
